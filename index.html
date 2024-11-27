@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App</title>
+    <!--------------------------- Font-awesome icon ------------------------------>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--------------------------- iconify-icon ----------------------------------->
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <!--------------------------- Custom CSS ------------------------------------->
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+
+<body>
+    <!---------------------- Music wrapper Start -------------->
+    <div class="wrapper">
+        <div class="wrapper-play">
+            <header>
+                <button class="headbtn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h3>🎶٨ـﮩ٨ـ♡ﮩ٨ﮩ٨ـ🎵</h3>
+                <button class="headbtn">
+                    <iconify-icon icon="mdi:playlist-music"
+                        style="color: #212326; position: relative; top:5px; left:2px;" width="25" height="25"
+                        id="menu-list"></iconify-icon>
+                </button>
+            </header>
+            <!---------------- Music List Start --------------->
+            <div class="music-list">
+                <div class="header">
+                    <div class="row">
+                        <span class="m-list">Playing now</span>
+                    </div>
+                    <i class="fa-solid fa-xmark" id="close"></i>
+                </div>
+                <ul></ul>
+            </div>
+            <!-------------- Music List End ------------------->
+
+            <div class="player">
+                <div class="image-area">
+                    <img src="">
+                </div>
+                <div class="song-details">
+                    <h1 class="name"></h1>
+                    <h3 class="artists"></h3>
+                </div>
+                <div class="audio-c">
+                    <div class="progress-area">
+                        <div class="progressbar">
+                            <audio id="m-audio" src="" type="audio/mp3"></audio>
+                        </div>
+                    </div>
+                    <div class="song-timer">
+                        <span class="current-time">0:00</span>
+                        <span class="max-duration">0:00</span>
+                    </div>
+                    <div class="lyrics-section">
+                        <span id="lyrics-message">No lyrics</span>
+                        <button class="lyrics-button" id="open-lyrics-options-btn">Add</button>
+                    </div>
+                    
+                    <!-- Hidden file input for file upload -->
+                    <input type="file" id="file-upload" style="display: none;" accept=".txt,.pdf,.docx" />
+                    
+     
+                <div class="controls">
+                    <button aria-label="Previous song" class="btn-c" id="prev">
+                        <i class="fa-solid fa-backward"></i>
+                    </button>                    
+                    <button class="play-pause btn-c">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                    <button class="btn-c" id="next">
+                        <i class="fa-solid fa-forward"></i>
+                    </button>
+                </div>
+                <div class="additional-controls">
+                    <button class="control-btn" id="favorite">
+                        <i class="fa fa-heart"></i>
+                    </button>                
+                    <button id="shuffle" class="control-btn">
+                        <i class="fa-solid fa-random"></i>
+                    </button>
+                    <button id="repeat" class="control-btn">
+                        <i class="fa-solid fa-repeat"></i>
+                    </button>
+                    <button id="more" class="control-btn">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+                </div>
+                
+                <!-- Hidden content for the "More" button -->
+                <div class="more-content-box" id="more-content-box">
+                    <ul>
+                        <li><a id="sleep-timer">Sleep Timer</a></li>
+                        <li><a id="ringtone-editor">Ringtone Editor</a></li>
+                        <li><a id="share">Share</a></li>
+                        <li><a id="equalizer">Equalizer</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Sleep Timer Modal -->
+                <div id="sleep-timer-modal" class="sleep-modal">
+                    <h3>Set Timer</h3>
+                    <ul>
+                        <li><a class="timer-btn" data-time="10">10 mins</a></li>
+                        <li><a class="timer-btn" data-time="20">20 mins</a></li>
+                        <li><a class="timer-btn" data-time="30">30 mins</a></li>
+                        <li><a class="timer-btn" data-time="50">40 mins</a></li>
+                        <li><a class="timer-btn" data-time="50">50 mins</a></li>
+                        <li><a class="timer-btn" data-time="60">60 mins</a></li>
+                        <li><a class="timer-btn" data-time="70">70 mins</a></li>
+                        <li><a class="timer-btn" data-time="80">80 mins</a></li>
+                        <li><a class="timer-btn" data-time="90">90 mins</a></li>
+                    </ul>
+                    <button id="cancel-timer">Cancel</button>
+                </div>
+                
+                <!-- Ringtone Editor Modal -->
+                <div id="ringtone-editor-modal" class="ringtone-modal">
+                    <h3>Ringtone Editor</h3>
+                    <label for="start-time">Start Time:</label>
+                    <input type="range" id="start-time" min="0" max="240" step="1" value="0">
+                    <span id="start-time-display">0:00</span>
+                    <br>
+                    <label for="end-time">End Time:</label>
+                    <input type="range" id="end-time" min="0" max="240" step="1" value="240">
+                    <span id="end-time-display">4:00</span>
+                    <br>
+                    <button id="save-ringtone">Set Tone</button>
+                    <button id="cancel-ringtone">Cancel</button>
+                </div>
+                
+                <!-- Equalizer Modal -->
+                <div id="equalizer-modal" class="equalizer-modal">
+                    <h3>Music Genre</h3>
+                    <ul class="genre-list">
+                        <li><a class="music-genre"value="pop">Pop</a></li>
+                        <li><a class="music-genre"value="rock">Rock</a></li>
+                        <li><a class="music-genre"value="jazz">Jazz</a></li>
+                        <li><a class="music-genre"value="classical">Classical</a></li>
+                        <li><a class="music-genre"value="hiphop">Hip-hop</a></li>
+                        <li><a class="music-genre"value="folk">Folk</a></li>
+                        <li><a class="music-genre"value="dance">Dance</a></li>
+                        <li><a class="music-genre"value="heavymetal">Heavy Metal</a></li>
+                    </ul>
+                        <button id="cancel-equalizer">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------- Music wrapper End ---------------->
+
+
+    <!---------------------- jqyery cdn ----------------->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!---------------------- Custom JS ------------------>
+    <script src="JS/script.js"></script>
+</body>
+
+</html>
