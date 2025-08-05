@@ -1,0 +1,8 @@
+{
+    "songTitle": "Your Song Title",
+    "lyrics": [
+        {"time": 0, "text": "First line of the song lyrics"},
+        {"time": 5, "text": "Second line of the song lyrics"},
+        {"time": 10, "text": "Third line of the song lyrics"}
+    ]
+}
